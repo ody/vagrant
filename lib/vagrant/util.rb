@@ -5,6 +5,7 @@ module Vagrant
     autoload :HashWithIndifferentAccess, 'vagrant/util/hash_with_indifferent_access'
     autoload :PlainLogger,               'vagrant/util/plain_logger'
     autoload :Platform,                  'vagrant/util/platform'
+    autoload :Registerable,              'vagrant/util/registerable'
     autoload :ResourceLogger,            'vagrant/util/resource_logger'
     autoload :Retryable,                 'vagrant/util/retryable'
     autoload :StackedProcRunner,         'vagrant/util/stacked_proc_runner'

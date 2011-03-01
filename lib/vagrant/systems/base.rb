@@ -20,24 +20,10 @@ module Vagrant
       end
 
       include Vagrant::Util
+      include Vagrant::Util::Registerable
 
       # The VM which this system is tied to.
       attr_reader :vm
-
-      # Registers a system with a given shortcut. This allows that system
-      # to be referenced with the shortcut.
-      #
-      # @param [Symbol] shortcut
-      def self.register(shortcut)
-        registered[shortcut] = self
-      end
-
-      # Returns the association of shortcut to system class.
-      #
-      # @return [Hash]
-      def self.registered
-        @@registered ||= {}
-      end
 
       # Initializes the system. Any subclasses MUST make sure this
       # method is called on the parent. Therefore, if a subclass overrides

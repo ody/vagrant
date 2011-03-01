@@ -6,6 +6,7 @@ module Vagrant
     # Puppet.
     class Base
       include Vagrant::Util
+      include Vagrant::Util::Registerable
 
       # The environment which provisioner is running in. This is a
       # {Vagrant::Action::Environment}
@@ -14,19 +15,6 @@ module Vagrant
       # The configuration for this provisioner. This will be an instance of
       # the `Config` class which is part of the provisioner.
       attr_reader :config
-
-      # Registers a provisioner with a given shortcut. This allows that provisioner
-      # to be referenced with the shortcut.
-      #
-      # @param [Symbol] shortcut
-      def self.register(shortcut)
-        registered[shortcut] = self
-      end
-
-      # Returns the provisioner associated with the given shortcut.
-      def self.registered
-        @@registered ||= {}
-      end
 
       def initialize(env, config)
         @action_env = env
