@@ -3,6 +3,8 @@ require 'vagrant/systems/debian'
 module Vagrant
   module Systems
     class Ubuntu < Debian
+      register :ubuntu
+
       def change_host_name(name)
         vm.ssh.execute do |ssh|
           if !ssh.test?("sudo hostname | grep '#{name}'")

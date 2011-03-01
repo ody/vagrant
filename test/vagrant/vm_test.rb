@@ -121,19 +121,15 @@ class VMTest < Test::Unit::TestCase
       end
 
       context "with a symbol" do
-        should "initialize proper symbols" do
-          valid = {
-            :linux => Vagrant::Systems::Linux,
-            :solaris => Vagrant::Systems::Solaris
-          }
+        should "initialize based on the systems mapping" do
+          symbol = :linux
+          klass = Vagrant::Systems::Linux
 
-          valid.each do |symbol, klass|
-            @vm.env.config.vm.system = symbol
+          @vm.env.config.vm.system = symbol
 
-            assert_nothing_raised { @vm.load_system! }
-            assert @vm.system.is_a?(klass)
-            assert_equal @vm, @vm.system.vm
-          end
+          assert_nothing_raised { @vm.load_system! }
+          assert @vm.system.is_a?(klass)
+          assert_equal @vm, @vm.system.vm
         end
 
         should "error and exit with invalid symbol" do

@@ -4,6 +4,8 @@ module Vagrant
     #
     # Contributed by Kenneth Vestergaard <kvs@binarysolutions.dk>
     class FreeBSD < Base
+      register :freebsd
+
       # A custom config class which will be made accessible via `config.freebsd`
       # This is not necessary for all system implementers, of course. However,
       # generally, Vagrant tries to make almost every aspect of its execution

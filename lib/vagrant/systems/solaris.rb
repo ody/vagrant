@@ -4,6 +4,8 @@ module Vagrant
     #
     # Contributed by Blake Irvin <b.irvin@modcloth.com>
     class Solaris < Base
+      register :solaris
+
       # A custom config class which will be made accessible via `config.solaris`
       # This is not necessary for all system implementers, of course. However,
       # generally, Vagrant tries to make almost every aspect of its execution

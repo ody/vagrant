@@ -56,19 +56,8 @@ module Vagrant
         raise Errors::VMSystemError, :_key => :invalid_class, :system => system.to_s if !(system <= Systems::Base)
         @system = system.new(self)
       elsif system.is_a?(Symbol)
-        # Hard-coded internal systems
-        mapping = {
-          :debian  => Systems::Debian,
-          :ubuntu  => Systems::Ubuntu,
-          :freebsd => Systems::FreeBSD,
-          :gentoo  => Systems::Gentoo,
-          :redhat  => Systems::Redhat,
-          :linux   => Systems::Linux,
-          :solaris => Systems::Solaris
-        }
-
-        raise Errors::VMSystemError, :_key => :unknown_type, :system => system.to_s if !mapping.has_key?(system)
-        @system = mapping[system].new(self)
+        raise Errors::VMSystemError, :_key => :unknown_type, :system => system.to_s if !Systems::Base.registered.has_key?(system)
+        @system = Systems::Base.registered[system].new(self)
       else
         raise Errors::VMSystemError, :unspecified
       end

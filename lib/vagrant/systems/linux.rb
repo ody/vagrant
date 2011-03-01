@@ -4,6 +4,8 @@ require 'vagrant/systems/linux/config'
 module Vagrant
   module Systems
     class Linux < Base
+      register :linux
+
       def distro_dispatch
         vm.ssh.execute do |ssh|
           if ssh.test?("cat /etc/debian_version")

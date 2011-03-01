@@ -1,6 +1,8 @@
 module Vagrant
   module Systems
     class Redhat < Linux
+      register :redhat
+
       def prepare_host_only_network(net_options)
         # Remove any previous host only network additions to the
         # interface file.
